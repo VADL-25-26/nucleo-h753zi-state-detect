@@ -72,7 +72,7 @@ static void MX_USART2_UART_Init(void);
 static void MX_TIM7_Init(void);
 /* USER CODE BEGIN PFP */
 // Helpers: printing state transition and driving LEDs based on flight state
-static void PrintState(FlightState_t s);
+static char* PrintState(FlightState_t s);
 static void DriveStateLED(FlightState_t s);
 /* USER CODE END PFP */
 
@@ -80,8 +80,8 @@ static void DriveStateLED(FlightState_t s);
 /* USER CODE BEGIN 0 */
 
 // UART print of state transitions using printf routed to COM1 by BSP
-static void PrintState(FlightState_t s) {
-	const char *name = "UNK";
+static char* PrintState(FlightState_t s) {
+	char *name = "UNK";
 	switch (s) {
 	case FLIGHT_STATE_GROUND_IDLE:
 		name = "GROUND";
@@ -101,12 +101,13 @@ static void PrintState(FlightState_t s) {
 	default:
 		break;
 	}
-	printf("STATE -> %s\r\n", name);
+//	printf("STATE CHANGE -> %s\r\n", name);
+	return name;
 }
 
 // Printing IMU data
-static void PrintIMUData(IMU_Data_t data) {
-	printf("IMU: accel=%.2f,%.2f,%.2f g alt=%.1f ft\r\n", data.accelX,
+static void PrintIMUData(IMU_Data_t data, char* state) {
+	printf("[%s] IMU: accel=%.2f,%.2f,%.2f g alt=%.1f ft\r\n", state, data.accelX,
 			data.accelY, data.accelZ, data.altitude);
 }
 
@@ -268,8 +269,11 @@ int main(void) {
 
 			// If state changed, print and update LED pattern
 			FlightState_t now = FlightState_GetCurrent();
+			char* curState = PrintState(now);
+
 			if (now != g_last_state) {
-				PrintState(now);
+
+				printf("STATE CHANGE -> %s\r\n", curState);
 				g_last_state = now;
 			}
 			DriveStateLED(now);
@@ -277,7 +281,7 @@ int main(void) {
 			print_counter++;
 			if (print_counter >= 20) {
 				IMU_Data_t imu_data = IMU_GetLatestData();
-				PrintIMUData(imu_data);
+				PrintIMUData(imu_data, curState);
 				print_counter = 0;
 			}
 		}
@@ -354,9 +358,9 @@ static void MX_TIM7_Init(void) {
 
 	/* USER CODE END TIM7_Init 1 */
 	htim7.Instance = TIM7;
-	htim7.Init.Prescaler = 0;
+	htim7.Init.Prescaler = (uint32_t)((SystemCoreClock / 2) / 200000) - 1; // Adjust for 200Hz;
 	htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
-	htim7.Init.Period = 65535;
+	htim7.Init.Period = 999;
 	htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
 	if (HAL_TIM_Base_Init(&htim7) != HAL_OK) {
 		Error_Handler();
@@ -452,7 +456,7 @@ static void MX_GPIO_Init(void) {
  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	/* USER CODE BEGIN Callback 0 */
-	// IMU simulation code from first definition
+
 	// also htim->Instance == TIM7 works for this
 	// htim == &htim7
 	if (htim->Instance == TIM7) {

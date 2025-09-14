@@ -3,7 +3,7 @@
  * Converted from ACS flight state detection program
  *
  *  Created on: Sep 12, 2025
- *      Author: Neal
+ *      Author: Neal B
  */
 
 
@@ -85,8 +85,8 @@ void FlightState_Update(void) {
         //     //DataLogger_LogEvent("Main Descent Detected")
         // }
 
-        /*Landed State Condition - No New Altitude in (x) cycles*/
-        if (altitude < previousAltitude && altitude < groundAltitude + LAUNCH_LANDING_ALT_DELTA) {
+        /*Landed State Condition - No New Altitude in (x) Cycles. Altitude within delta of launch altitude.*/
+        if (altitude < previousAltitude && fabsf(altitude - groundAltitude) < LAUNCH_LANDING_ALT_DELTA) {
             previousAltitude = altitude;
             consecutiveReadingsLanding = 0;
         } else {
