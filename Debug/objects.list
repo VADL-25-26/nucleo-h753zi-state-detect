@@ -1,5 +1,6 @@
 "./Core/Src/datalogger.o"
 "./Core/Src/flight_state.o"
+"./Core/Src/imu.o"
 "./Core/Src/imu_adapter.o"
 "./Core/Src/imu_sim.o"
 "./Core/Src/kalman.o"

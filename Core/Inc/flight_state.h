@@ -34,7 +34,8 @@ typedef enum {
 #define MOTOR_BURN_TIME_MS             1000    /* Motor burn time in milliseconds */
 
 void FlightState_Init(void);
-void FlightState_Update(void);
+//void FlightState_Update(void);
+void FlightState_Update(IMU_Data_t imuData);
 FlightState_t FlightState_GetCurrent(void);
 float FlightState_GetGroundAltitude(void);
 uint32_t FlightState_GetLaunchTime(void);

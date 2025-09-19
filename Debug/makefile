@@ -61,8 +61,8 @@ all: main-build
 main-build: nucleo-h753-state-detect.elf secondary-outputs
 
 # Tool invocations
-nucleo-h753-state-detect.elf nucleo-h753-state-detect.map: $(OBJS) $(USER_OBJS) C:\Users\Owner\STM32CubeIDE\workspace_1.19.0\nucleo-h753-state-detect\STM32H753ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "nucleo-h753-state-detect.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\Owner\STM32CubeIDE\workspace_1.19.0\nucleo-h753-state-detect\STM32H753ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleo-h753-state-detect.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+nucleo-h753-state-detect.elf nucleo-h753-state-detect.map: $(OBJS) $(USER_OBJS) C:\Users\purev\NewPayloadControl\nucleo-h753zi-state-detect\STM32H753ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "nucleo-h753-state-detect.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\purev\NewPayloadControl\nucleo-h753zi-state-detect\STM32H753ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nucleo-h753-state-detect.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

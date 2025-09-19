@@ -29,8 +29,9 @@ void FlightState_Init(void) {
 
 }
 
-void FlightState_Update(void) {
-    IMU_Data_t imuData = IMU_GetLatestData();
+void FlightState_Update(IMU_Data_t imuData) {
+//	IMU_Data_t imuData;
+//	imu_read(&imuData);
 
     float altitude = imuData.altitude;
     float filteredAltitude, filteredVelocity;

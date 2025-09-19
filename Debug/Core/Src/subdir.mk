@@ -7,6 +7,7 @@
 C_SRCS += \
 ../Core/Src/datalogger.c \
 ../Core/Src/flight_state.c \
+../Core/Src/imu.c \
 ../Core/Src/imu_adapter.c \
 ../Core/Src/imu_sim.c \
 ../Core/Src/kalman.c \
@@ -21,6 +22,7 @@ C_SRCS += \
 OBJS += \
 ./Core/Src/datalogger.o \
 ./Core/Src/flight_state.o \
+./Core/Src/imu.o \
 ./Core/Src/imu_adapter.o \
 ./Core/Src/imu_sim.o \
 ./Core/Src/kalman.o \
@@ -35,6 +37,7 @@ OBJS += \
 C_DEPS += \
 ./Core/Src/datalogger.d \
 ./Core/Src/flight_state.d \
+./Core/Src/imu.d \
 ./Core/Src/imu_adapter.d \
 ./Core/Src/imu_sim.d \
 ./Core/Src/kalman.d \
@@ -54,7 +57,7 @@ Core/Src/%.o Core/Src/%.su Core/Src/%.cyclo: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/datalogger.cyclo ./Core/Src/datalogger.d ./Core/Src/datalogger.o ./Core/Src/datalogger.su ./Core/Src/flight_state.cyclo ./Core/Src/flight_state.d ./Core/Src/flight_state.o ./Core/Src/flight_state.su ./Core/Src/imu_adapter.cyclo ./Core/Src/imu_adapter.d ./Core/Src/imu_adapter.o ./Core/Src/imu_adapter.su ./Core/Src/imu_sim.cyclo ./Core/Src/imu_sim.d ./Core/Src/imu_sim.o ./Core/Src/imu_sim.su ./Core/Src/kalman.cyclo ./Core/Src/kalman.d ./Core/Src/kalman.o ./Core/Src/kalman.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/stm32h7xx_hal_msp.cyclo ./Core/Src/stm32h7xx_hal_msp.d ./Core/Src/stm32h7xx_hal_msp.o ./Core/Src/stm32h7xx_hal_msp.su ./Core/Src/stm32h7xx_hal_timebase_tim.cyclo ./Core/Src/stm32h7xx_hal_timebase_tim.d ./Core/Src/stm32h7xx_hal_timebase_tim.o ./Core/Src/stm32h7xx_hal_timebase_tim.su ./Core/Src/stm32h7xx_it.cyclo ./Core/Src/stm32h7xx_it.d ./Core/Src/stm32h7xx_it.o ./Core/Src/stm32h7xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32h7xx.cyclo ./Core/Src/system_stm32h7xx.d ./Core/Src/system_stm32h7xx.o ./Core/Src/system_stm32h7xx.su
+	-$(RM) ./Core/Src/datalogger.cyclo ./Core/Src/datalogger.d ./Core/Src/datalogger.o ./Core/Src/datalogger.su ./Core/Src/flight_state.cyclo ./Core/Src/flight_state.d ./Core/Src/flight_state.o ./Core/Src/flight_state.su ./Core/Src/imu.cyclo ./Core/Src/imu.d ./Core/Src/imu.o ./Core/Src/imu.su ./Core/Src/imu_adapter.cyclo ./Core/Src/imu_adapter.d ./Core/Src/imu_adapter.o ./Core/Src/imu_adapter.su ./Core/Src/imu_sim.cyclo ./Core/Src/imu_sim.d ./Core/Src/imu_sim.o ./Core/Src/imu_sim.su ./Core/Src/kalman.cyclo ./Core/Src/kalman.d ./Core/Src/kalman.o ./Core/Src/kalman.su ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/stm32h7xx_hal_msp.cyclo ./Core/Src/stm32h7xx_hal_msp.d ./Core/Src/stm32h7xx_hal_msp.o ./Core/Src/stm32h7xx_hal_msp.su ./Core/Src/stm32h7xx_hal_timebase_tim.cyclo ./Core/Src/stm32h7xx_hal_timebase_tim.d ./Core/Src/stm32h7xx_hal_timebase_tim.o ./Core/Src/stm32h7xx_hal_timebase_tim.su ./Core/Src/stm32h7xx_it.cyclo ./Core/Src/stm32h7xx_it.d ./Core/Src/stm32h7xx_it.o ./Core/Src/stm32h7xx_it.su ./Core/Src/syscalls.cyclo ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/syscalls.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32h7xx.cyclo ./Core/Src/system_stm32h7xx.d ./Core/Src/system_stm32h7xx.o ./Core/Src/system_stm32h7xx.su
 
 .PHONY: clean-Core-2f-Src
 

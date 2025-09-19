@@ -1,3 +1,3 @@
 ../Core/Src/imu_sim.c:16:6:IMU_Sim_Tick_200Hz	16	static
 ../Core/Src/imu_sim.c:38:7:IMU_Sim_CalculateGroundAltitude	4	static
-../Core/Src/imu_sim.c:39:12:IMU_Sim_GetLatestData	40	static
+../Core/Src/imu_sim.c:39:12:IMU_Sim_GetLatestData	24	static

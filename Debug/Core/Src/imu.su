@@ -1,0 +1,10 @@
+../Core/Src/imu.c:32:17:vn_crc16	24	static
+../Core/Src/imu.c:48:14:little_endian_2_float	24	static
+../Core/Src/imu.c:53:12:process_one_imu_frame	72	static
+../Core/Src/imu.c:87:24:dma_widx	16	static
+../Core/Src/imu.c:97:13:process_rx	104	static
+../Core/Src/imu.c:140:13:imu_send_init	48	static
+../Core/Src/imu.c:157:13:imu_reset	48	static
+../Core/Src/imu.c:169:5:imu_setup	16	static
+../Core/Src/imu.c:187:5:imu_read	24	static
+../Core/Src/imu.c:197:6:imu_on_usart_irq	16	static
