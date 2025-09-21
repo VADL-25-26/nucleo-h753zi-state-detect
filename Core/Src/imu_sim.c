@@ -26,7 +26,7 @@ void IMU_Sim_Tick_200Hz(void) {
   } else if (t_ms < 11000) {        // DESCENT
     ax_g = -0.2f; alt_ft = ground_ft + 300.0f - 0.05f*(t_ms-6000);
   } else {                          // LANDED
-    ax_g = 0.0f;  alt_ft = ground_ft + 5.0f;
+    ax_g = 0.0f;  alt_ft = ground_ft + 30.0f;
   }
 
   g_latest.accelX = ax_g;           // we only use accelX for launch detection in legacy code
