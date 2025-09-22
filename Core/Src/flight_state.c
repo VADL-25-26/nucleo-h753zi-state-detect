@@ -40,7 +40,7 @@ void FlightState_Update(IMU_Data_t imuData) {
 
     /*Ground Logic*/
     if (currentState == FLIGHT_STATE_GROUND_IDLE) {
-        if (fabsf(imuData.accelX) > LAUNCH_ACCELERATION_THRESHOLD) {
+        if (fabsf(imuData.accelX) > LAUNCH_ACCELERATION_THRESHOLD && altitude > (groundAltitude + LAUNCH_ALTITUDE_THRESHOLD)) {
             consecutiveReadingsLaunch++;
         } else {
             consecutiveReadingsLaunch = 0;

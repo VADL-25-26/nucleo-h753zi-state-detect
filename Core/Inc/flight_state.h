@@ -24,10 +24,11 @@ typedef enum {
 } FlightState_t;
 
 /* Flight detection thresholds */
-#define LAUNCH_ACCELERATION_THRESHOLD  1.25f   /* Acceleration threshold in g */
+#define LAUNCH_ACCELERATION_THRESHOLD  4.00f   /* Acceleration threshold (G) */
+#define LAUNCH_ALTITUDE_THRESHOLD      500.0f /* Launch Altitude Threshold in (ft) */
 #define LAUNCH_DETECTION_COUNT         10      /* Number of consecutive readings above threshold */
-#define APOGEE_DETECTION_COUNT         50      /* Readings with negative velocity for apogee */
-#define LANDING_DETECTION_COUNT        1000    /* Readings with no new minimum altitude for landing */
+#define APOGEE_DETECTION_COUNT         50      /* Number of consecutive readings with negative velocity for apogee */
+#define LANDING_DETECTION_COUNT        1000    /* Number of consecutive readings with no new minimum altitude for landing */
 #define MIN_ALTITUDE_FOR_APOGEE        100.0f  /* Minimum altitude (ft) for apogee detection */
 #define LAUNCH_LANDING_ALT_DELTA	   50.0f   /* Maximum altitude (ft) difference between launch and landing. Used for landing detection */
 #define MAIN_CHUTE_ALTITUDE            500.0f  /* Altitude (ft) for main chute deployment */
