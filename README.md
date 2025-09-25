@@ -14,5 +14,7 @@ Follow the connections in the image below when using the STM32 F446RE:
 Ensure that TIM7, USART1 & USART2 are enabled.
 USART1 and USART2 must have a Baud of 115200 and WL of 8 (including parity).
 
+On STM32CubeIDE, go to Project -> Clean -> Clean All Projects & Start Build Immediately. This should configure the project for your machine.
+
 Run the main.c file in either debug or run modes
 Launch a Serial Monitor at 115200 and read from COM connected to STM32. 
