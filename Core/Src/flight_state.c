@@ -47,20 +47,14 @@ void FlightState_Update(IMU_Data_t imuData) {
         }
 
         if (consecutiveReadingsLaunch >= LAUNCH_DETECTION_COUNT) {
-            currentState = FLIGHT_STATE_POWERED_FLIGHT;
+            currentState = FLIGHT_STATE_ASCENT;
             launchTime = HAL_GetTick(); // or whatever function polls the RTS on the STM32
             // DataLogger_LogEvent("Launch Detected");
         }
     }
 
     /*Apogee Detection*/
-    if (currentState == FLIGHT_STATE_POWERED_FLIGHT || currentState == FLIGHT_STATE_UNPOWERED_FLIGHT) {
-
-        /*State Change from powered to unpowered ascent*/
-        if (currentState == FLIGHT_STATE_POWERED_FLIGHT &&
-            (HAL_GetTick() - launchTime) > MOTOR_BURN_TIME_MS)
-            currentState = FLIGHT_STATE_UNPOWERED_FLIGHT;
-            //DataLogger_LogEvent("Motor Burnout")
+    if (currentState == FLIGHT_STATE_ASCENT) {
 
         /*Check for Apogee*/
         if (filteredVelocity < 0.0f && altitude > (groundAltitude + MIN_ALTITUDE_FOR_APOGEE)) {
@@ -79,12 +73,6 @@ void FlightState_Update(IMU_Data_t imuData) {
 
     /*Landing Detection*/
     if (currentState == FLIGHT_STATE_DESCENT) {
-
-        /*Check for Main Chute Deployment*/
-        // if (currentState == FLIGHT_STATE_DROGUE_DESCENT && altitude < (groundAltitude + MAIN_CHUTE_ALTITUDE)) {
-        //     currentState = FLIGHT_STATE_MAIN_DESCENT;
-        //     //DataLogger_LogEvent("Main Descent Detected")
-        // }
 
         /*Landed State Condition - No New Altitude in (x) Cycles. Altitude within delta of launch altitude.*/
         if (altitude < previousAltitude && fabsf(altitude - groundAltitude) < LAUNCH_LANDING_ALT_DELTA) {

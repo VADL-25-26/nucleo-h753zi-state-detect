@@ -245,7 +245,7 @@ int main(void)
 		Error_Handler();
 	}
 
-	/* -- Sample board code to send message over COM1 port ---- */
+	/* -- Sample board code to send message over COM port ---- */
 	printf("\r\n\r\n*** IMU Simulator & Flight State Demo ***\r\n");
 	printf("Press USER button to start/stop simulation\r\n");
 

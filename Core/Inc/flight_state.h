@@ -17,6 +17,7 @@
 
 typedef enum {
     FLIGHT_STATE_GROUND_IDLE,     /* Rocket on ground, pre-launch */
+	FLIGHT_STATE_ASCENT,		  /* Rocket launched, approaching apogee */
     FLIGHT_STATE_POWERED_FLIGHT,  /* Motor burning, accelerating */
     FLIGHT_STATE_UNPOWERED_FLIGHT,/* Coasting to apogee */
     FLIGHT_STATE_DESCENT,         /* Descending under parachute */
